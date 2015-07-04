@@ -1,39 +1,44 @@
 $(document).ready(function()
 {
-	var ryuContainer = $(".ryu-container"),
+	var ryuContainer = $(".ryu"),
 		ryuReady = $(".ryu-ready"),
 		ryuStill = $(".ryu-still"),
 		ryuCool = $(".ryu-cool"),
 		ryuThrowing = $(".ryu-throwing"),
-		hadouken = $(".hadouken");
+		hadouken = $(".hadouken"),
+		audioElement = document.createElement('audio');
+        
+        audioElement.setAttribute('src', 'sound/hadouken.mp3');
+        audioElement.setAttribute('autoplay', 'autoplay');
 
 
-	ryuContainer.hover(handlerIn, handlerOut);
-
-	ryuContainer.mousedown(function()
+	ryuContainer.hover(function ()
 	{
+		ryuReady.toggle();
+		ryuStill.toggle();
+	},	
+	function ()
+	{
+		ryuReady.toggle();
+		ryuStill.toggle();
+	}).mousedown(function()
+	{
+		// play hadouken sound
+		audioElement.play();
+
 		ryuReady.toggle();
 		ryuThrowing.toggle();
 		hadouken.toggle();
-		hadouken.animate({left: "+=1000"}, 1000);
+		//animate hadouken to the right of the screen
     	
 	}).mouseup(function()
 	{
+		console.log('mouseup');
 		ryuReady.toggle();
 		ryuThrowing.toggle();
 		hadouken.toggle();
 	});
 
-	function handlerIn()
-	{
-		ryuReady.toggle();
-		ryuStill.toggle();
-	}
-
-	function handlerOut()
-	{
-		ryuReady.toggle();
-		ryuStill.toggle();
-	}
+	
 
 })

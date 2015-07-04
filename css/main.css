@@ -19,7 +19,7 @@ body
     float:left;
 }
 
-.ryu-ready, .ryu-still, .ryu-still {
+.ryu-ready, .ryu-still, .ryu-still, .ryu-throwing{
   width: 659px;
   height: 494px;
 }
