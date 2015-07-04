@@ -5,22 +5,23 @@ $(document).ready(function()
 		ryuStill = $(".ryu-still"),
 		ryuCool = $(".ryu-cool"),
 		ryuThrowing = $(".ryu-throwing"),
-		hadouken = $(".hadouken");
+		hadouken = $(".hadouken"),
+		ryuAction = $(".ryu-action");
 
 
 	ryuContainer.hover(function ()
 	{
+		ryuAction.hide();
 		ryuReady.show();
-		ryuStill.hide();
 	},	
 	function ()
 	{
-		ryuReady.hide();
+		ryuAction.hide();
 		ryuStill.show();
 	}).mousedown(function()
 	{
 		playHadouken();
-		ryuReady.hide();
+		ryuAction.hide();
 		ryuThrowing.show();
 		hadouken.finish().show().animate(
 		  {'left': '1020px'},
@@ -33,8 +34,22 @@ $(document).ready(function()
     	
 	}).mouseup(function()
 	{
+		ryuAction.hide();
 		ryuReady.show();
-		ryuThrowing.hide();
+	});
+
+	$(document).keydown(function()
+	{
+	 if ( event.which == 88 ) {
+	    ryuAction.hide();
+	   	ryuCool.show();
+	  }
+	}).keyup(function()
+	{
+		if ( event.which == 88 ) {
+	    	ryuAction.hide();
+	    	ryuStill.show();
+	  	}
 	});
 })
 	function playHadouken () {
